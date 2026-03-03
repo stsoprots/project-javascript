@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f7f6;
+    padding: 20px;
+    color: #333;
+}
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/*----------- universal card design ---------------*/
+.layout-design {
+    background: #ffffff;
+    border: 1px solid #d1d8e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.layout-design-link {
+    display: block;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.layout-design-link:hover {
+    background-color: #2980b9;
+}
+
+/*---------- grid layouts for pages -------------*/
+.users-wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+.post-comments-block {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+/*---------- specific elements & buttons -------------*/
+.post-btn {
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    margin: 0 auto 30px auto;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.post-btn:hover {
+    background-color: #27ae60;
+}
+
+.post-btn:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+#user-info {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+}
+#post-info {
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+}
+.layout-design h3, .layout-design h4 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+.layout-design ul li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+#p-email{
+    margin: 10px 0 10px 0;
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>First Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="app-container">
+    <h1>Test</h1>
+
+    <form id="pair-form" class="layout-row">
+        <div class="left-col">
+            <label for="name-value">Name/Value Pair</label>
+            <input type="text" id="name-value" placeholder="Name=Value">
+        </div>
+        <div class="right-col align-bottom">
+            <button type="submit" id="addBtn">Add</button>
+        </div>
+    </form>
+
+    <div class="layout-row">
+        <div class="left-col">
+            <label for="pair-listbox">Name/Value Pair List</label>
+            <select id="pair-listbox" multiple></select>
+        </div>
+        <div class="right-col align-bottom action-buttons">
+            <button type="button" id="sortNameBtn">Sort by Name</button>
+            <button type="button" id="sortValueBtn">Sort by Value</button>
+            <button type="button" id="deleteBtn">Delete</button>
+        </div>
+    </div>
+    <div id="error-box" class="error-text"></div>
+</main>
+
+<script src="main.js"></script>
+
+</body>
+</html>
