@@ -4,7 +4,7 @@ const input = document.getElementById("name-value");
 const select = document.getElementById("pair-listbox");
 const errorBox = document.getElementById("error-box");
 
-// 2) Add or update a pair when the user submits the form
+// 2) Add or update a pair when the users submits the form
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -13,7 +13,7 @@ form.addEventListener("submit", (e) => {
 
     const userInput = input.value;
 
-    // Check if the user typed the '=' sign
+    // Check if the users typed the '=' sign
     if (!userInput.includes('=')) {
         errorBox.innerText = 'Error: You forgot the equals sign (=)'
         return;
@@ -70,47 +70,39 @@ deleteBtn.addEventListener("click", () => {
     }
 })
 
-// 4) Sort the list by Name (left side of '=')
+// ------------- corrections ---------------
+
+// 4) reusable function to sort the list (fixes code duplication)
+function sortListBy(type) {
+    // create an array from the list to sort it
+    let pairsArray = Array.from(select.options);
+
+    pairsArray.sort((a, b) => {
+        // choose index: 0 for name (left side), 1 for value (right side)
+        let index = type === 'name' ? 0 : 1;
+
+        // get the correct part and make it lowercase
+        let textA = a.innerText.split('=')[index].trim().toLowerCase();
+        let textB = b.innerText.split('=')[index].trim().toLowerCase();
+
+        // use natural sorting so "2" comes before "10"
+        return textA.localeCompare(textB, undefined, { numeric: true, sensitivity: 'base' });
+    });
+
+    // update the list on the screen
+    pairsArray.forEach(opt => select.appendChild(opt));
+}
+
+// 5) connect the sorting function to the buttons
 const sortNameBtn = document.getElementById("sortNameBtn");
 sortNameBtn.addEventListener("click", () => {
+    // call the function and tell it to sort by 'name'
+    sortListBy('name');
+});
 
-    // Create an array from the list to sort it
-    let pairsArray = Array.from(select.options);
-
-    pairsArray.sort((a, b) => {
-        // Get the Name part and make it lowercase for fair comparison
-        let nameA = a.innerText.split('=')[0].trim().toLowerCase();
-        let nameB = b.innerText.split('=')[0].trim().toLowerCase();
-
-        if (nameA < nameB) {
-            return -1;
-        }else if (nameA > nameB) {
-            return 1;
-        }
-        return 0;
-    })
-
-    // Update the list on the screen
-    pairsArray.forEach(opt => select.appendChild(opt))
-})
-
-// 5) Sort the list by Value (right side of '=')
 const sortValueBtn = document.getElementById('sortValueBtn');
 sortValueBtn.addEventListener('click', () => {
-    let pairsArray = Array.from(select.options);
-    pairsArray.sort((a, b) => {
-        let valA = a.innerText.split('=')[1].trim().toLowerCase();
-        let valB = b.innerText.split('=')[1].trim().toLowerCase();
-
-        if (valA < valB) {
-            return -1;
-        }else if (valA > valB) {
-            return 1;
-        }
-        return 0;
-    })
-
-    // Update the list on the screen
-    pairsArray.forEach(opt => select.appendChild(opt))
-})
+    // call the function and tell it to sort by 'value'
+    sortListBy('value');
+});
 

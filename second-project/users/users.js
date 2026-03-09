@@ -10,30 +10,30 @@ fetch(apiUrl)
     .then(value => value.json())
     // work with the array of users we received
     .then(users => {
-        // loop through each user one by one
+        // loop through each users one by one
         users.forEach(user => {
 
-            // create a main block (card) for the user
+            // create a main block (card) for the users
             const card = document.createElement("div");
             // add a css class to make the card look good
             card.classList.add("layout-design");
 
-            // create a heading to show the user's id and name
+            // create a heading to show the users's id and name
             const info = document.createElement("h3");
             // add text inside the heading
             info.innerText = `ID: ${user.id} - ${user.name}`;
 
-            // create a button (link) to go to the user details page
+            // create a button (link) to go to the users details page
             const link = document.createElement("a");
             // add a css class for the button style
             link.classList.add("layout-design-link");
             // add text inside the button
             link.innerText = 'User Details'
 
-            // save the user's id in the url so the next page knows who to show
-            link.href = `user-details.html?id=${user.id}`
+            // save the users's id in the url so the next page knows who to show
+            link.href = `users/user-details.html?id=${user.id}`
 
-            // put the heading and the button inside the user card
+            // put the heading and the button inside the users card
             card.appendChild(info);
             card.appendChild(link);
 

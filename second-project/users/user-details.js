@@ -7,7 +7,7 @@ const currentUrl = new URL(location.href);
 // find the 'id' number in the url
 const userId = currentUrl.searchParams.get("id");
 
-// find the html element where we will put the user data
+// find the html element where we will put the users data
 const userInfoContainer = document.getElementById('user-info');
 
 // function to create a list from an object (works for nested objects too)
@@ -59,16 +59,16 @@ function buildUserInfo(obj, parentElement){
     parentElement.appendChild(ul);
 }
 
-// check if we have a user id from the first page
+// check if we have a users id from the first page
 if (userId) {
-    // build full address for the specific user
+    // build full address for the specific users
     const userApiUrl = new URL(`/users/${userId}`,baseUrl);
 
-    // load user data from the server
+    // load users data from the server
     fetch(userApiUrl)
         .then(value => value.json())
         .then(user => {
-            // run our function to draw the user information
+            // run our function to draw the users information
             buildUserInfo(user, userInfoContainer);
         })
         .catch(error => console.error("Помилка завантаження:", error));
@@ -83,7 +83,7 @@ const postsContainer = document.getElementById('post-container');
 
 // add click event to the button
 postsBtn.addEventListener('click', () => {
-    // build full address for the user's posts
+    // build full address for the users's posts
     const postsUrl = new URL(`/users/${userId}/posts`, baseUrl);
 
     // load posts from the server
@@ -109,7 +109,7 @@ postsBtn.addEventListener('click', () => {
                 postLink.innerText = 'Post Details';
 
                 // save the post id in the url for the next page
-                postLink.href = `post-details.html?postId=${post.id}`;
+                postLink.href = `../posts/post-details.html?postId=${post.id}`;
 
                 // put the title and link inside the card
                 postBlock.appendChild(postTitle);
@@ -119,7 +119,7 @@ postsBtn.addEventListener('click', () => {
                 postsContainer.appendChild(postBlock);
 
             })
-            // disable the button so the user cannot click it again
+            // disable the button so the users cannot click it again
             postsBtn.disabled = true;
         })
 })
